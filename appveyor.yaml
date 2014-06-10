@@ -1,0 +1,7 @@
+# version format
+version: 1.2.{build}
+
+# branches to build
+branches:
+  only:
+    - master
