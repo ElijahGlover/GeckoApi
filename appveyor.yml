@@ -5,3 +5,5 @@ version: 1.2.{build}
 branches:
   only:
     - master
+
+configuration: Release

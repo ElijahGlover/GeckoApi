@@ -18,3 +18,8 @@ foreach (var product in client.Products.List(Filters.Limit(10)))
 [![Build status]
 (https://ci.appveyor.com/api/projects/status/st9tmngm4b0hs79h)]
 (https://ci.appveyor.com/project/ElijahGlover/geckoapi)
+
+```PowerShell
+Add-Package TradeGeckoApi
+```
+https://www.nuget.org/packages/TradeGeckoApi/
