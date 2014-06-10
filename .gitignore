@@ -1,0 +1,14 @@
+*.suo
+*.user
+_ReSharper.*
+bin
+obj
+*.bak
+*.sln.cache
+*.nupkg
+*.dotCover
+packages
+node_modules
+packages
+.tmp
+.sass-cache

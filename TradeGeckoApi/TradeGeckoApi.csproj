@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4DAAC410-BECC-4B88-9A3B-71100F5C17DE}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TradeGeckoApi</RootNamespace>
+    <AssemblyName>TradeGeckoApi</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <BuildPackage>true</BuildPackage>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp">
+      <HintPath>..\packages\RestSharp.104.4.0\lib\net4\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Context\Configuration.cs" />
+    <Compile Include="Context\OAuthDataContext.cs" />
+    <Compile Include="Exceptions\AuthenticationException.cs" />
+    <Compile Include="Exceptions\InvalidRequestException.cs" />
+    <Compile Include="Exceptions\NotFoundException.cs" />
+    <Compile Include="Exceptions\RequestException.cs" />
+    <Compile Include="Filters.cs" />
+    <Compile Include="GeckoClient.cs" />
+    <Compile Include="Model\IPaginationList.cs" />
+    <Compile Include="Model\ItemResponse.cs" />
+    <Compile Include="Model\PaginationList.cs" />
+    <Compile Include="Model\PaginationModel.cs" />
+    <Compile Include="Model\ListResponse.cs" />
+    <Compile Include="Resources\InvoiceItemResource.cs" />
+    <Compile Include="Resources\InvoiceResource.cs" />
+    <Compile Include="Serialization\ResponseContractResolver.cs" />
+    <Compile Include="Serialization\RootPropertyNameAttribute.cs" />
+    <Compile Include="Service\AuthenticationService.cs" />
+    <Compile Include="Serialization\LowercaseContractResolver.cs" />
+    <Compile Include="Serialization\JsonNetDeserializer.cs" />
+    <Compile Include="Serialization\JsonNetSerializer.cs" />
+    <Compile Include="Model\Address.cs" />
+    <Compile Include="Model\Company.cs" />
+    <Compile Include="Context\OAuthAuthentication.cs" />
+    <Compile Include="Model\Contact.cs" />
+    <Compile Include="Model\Currency.cs" />
+    <Compile Include="Model\Fulfillment.cs" />
+    <Compile Include="Model\FulfillmentItem.cs" />
+    <Compile Include="Model\Invoice.cs" />
+    <Compile Include="Model\InvoiceItem.cs" />
+    <Compile Include="Model\Order.cs" />
+    <Compile Include="Model\OrderItem.cs" />
+    <Compile Include="Model\PaymentTerm.cs" />
+    <Compile Include="Model\PriceList.cs" />
+    <Compile Include="Model\Location.cs" />
+    <Compile Include="Model\TokenResponse.cs" />
+    <Compile Include="Model\User.cs" />
+    <Compile Include="Model\Variant.cs" />
+    <Compile Include="Model\VariantLocation.cs" />
+    <Compile Include="Model\VariantPrice.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\AddressResource.cs" />
+    <Compile Include="Resources\CompanyResource.cs" />
+    <Compile Include="Model\Product.cs" />
+    <Compile Include="Resources\ContactResource.cs" />
+    <Compile Include="Resources\CurrencyResource.cs" />
+    <Compile Include="Resources\FulfillmentItemResource.cs" />
+    <Compile Include="Resources\FulfillmentResource.cs" />
+    <Compile Include="Resources\LocationResource.cs" />
+    <Compile Include="Resources\OrderItemResource.cs" />
+    <Compile Include="Resources\OrderResource.cs" />
+    <Compile Include="Resources\PaymentTermResource.cs" />
+    <Compile Include="Resources\PriceListResource.cs" />
+    <Compile Include="Resources\ProductResource.cs" />
+    <Compile Include="Resources\Resource.cs" />
+    <Compile Include="Resources\VariantResource.cs" />
+    <Compile Include="Service\IAuthenticationService.cs" />
+    <Compile Include="Service\IRequestService.cs" />
+    <Compile Include="Service\RequestService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
