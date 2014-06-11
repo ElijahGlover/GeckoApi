@@ -58,7 +58,7 @@ namespace TradeGeckoApi
 
         public static Parameter[] ByFulfillment(int fulfillmentId)
         {
-            return new[] { new Parameter {Name = "fulfillment_id", Value = fulfillmentId, Type = ParameterType.GetOrPost}};
+            return new[] { new Parameter {Name = "fulfillment_id", Value = fulfillmentId, Type = ParameterType.GetOrPost } };
         }
 
         public static Parameter[] ByInvoice(int invoiceId)

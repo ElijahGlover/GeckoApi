@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using RestSharp;
 using TradeGeckoApi.Model;
@@ -25,18 +26,16 @@ namespace TradeGeckoApi.Resources
 
         protected RestRequest CreateRequest(string uri, Method method = Method.GET)
         {
-            var request = new RestRequest(uri, method)
+            return new RestRequest(uri, method)
             {
                 JsonSerializer = new JsonNetSerializer(),
                 RequestFormat = DataFormat.Json
             };
-            return request;
         }
 
         protected IDictionary<string, T> WrapModel(T model)
         {
-            var type = typeof (T);
-            var attr = type.GetCustomAttribute<RootPropertyNameAttribute>();
+            var attr = typeof(T).GetCustomAttribute<RootPropertyNameAttribute>();
             return new Dictionary<string, T> {{attr.SingularName, model}};
         }
 
@@ -55,11 +54,23 @@ namespace TradeGeckoApi.Resources
             return RequestService.ExecuteListRequest<T>(request);
         }
 
+        public virtual IPaginationList<T> List(params Parameter[][] parameters)
+        {
+            var flatParameters = parameters
+                .SelectMany(p => p)
+                .ToArray();
+            return List(flatParameters);
+        }
+
+        public virtual IPaginationList<T> List()
+        {
+            return List(new Parameter[] {});
+        }
+
         public virtual void Delete(int id)
         {
             var request = CreateRequest(ResourceItemUri, Method.DELETE);
             request.AddParameter("id", id, ParameterType.UrlSegment);
-
             RequestService.ExecuteRequest(request);
         }
 
