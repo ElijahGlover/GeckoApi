@@ -4,29 +4,42 @@ using Newtonsoft.Json;
 using RestSharp;
 using TradeGeckoApi.Exceptions;
 using TradeGeckoApi.Model;
+using TradeGeckoApi.Serialization;
 
 namespace TradeGeckoApi.Service
 {
     public class RequestService : IRequestService
     {
         private readonly IAuthenticationService _authentication;
+        private readonly string _baseUrl;
         public const string PaginationHeader = "X-Pagination";
 
-        public RequestService(IAuthenticationService authentication)
+        public RequestService(IAuthenticationService authentication, string baseUrl)
         {
             _authentication = authentication;
+            _baseUrl = baseUrl;
+        }
+
+        public RestClient CreateClient()
+        {
+            var client = new RestClient(_baseUrl)
+            {
+                Authenticator = _authentication.CreateRequestAuthenticator()
+            };
+            client.AddHandler("application/json", new JsonNetDeserializer());
+            return client;
         }
 
         public void ExecuteRequest(RestRequest request)
         {
-            var client = _authentication.CreateClient();
+            var client = CreateClient();
             var response = client.Execute(request);
             InspectResponse(response);
         }
 
         public T ExecuteRequest<T>(RestRequest request)
         {
-            var client = _authentication.CreateClient();
+            var client = CreateClient();
             var response = client.Execute<ItemResponse<T>>(request);
             InspectResponse(response);
             return response.Data.Data;
@@ -34,7 +47,7 @@ namespace TradeGeckoApi.Service
 
         public IPaginationList<T> ExecuteListRequest<T>(RestRequest request)
         {
-            var client = _authentication.CreateClient();
+            var client = CreateClient();
             var response = client.Execute<ListResponse<T>>(request);
             InspectResponse(response);
 

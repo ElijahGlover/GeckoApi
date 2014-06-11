@@ -4,7 +4,6 @@ using System.Net;
 using RestSharp;
 using TradeGeckoApi.Context;
 using TradeGeckoApi.Model;
-using TradeGeckoApi.Serialization;
 
 namespace TradeGeckoApi.Service
 {
@@ -100,7 +99,7 @@ namespace TradeGeckoApi.Service
             GenerateToken();
         }
 
-        public RestClient CreateClient()
+        public IAuthenticator CreateRequestAuthenticator()
         {
             if (string.IsNullOrEmpty(_refreshToken))
                 LoadAuthenticationTokens();
@@ -108,11 +107,7 @@ namespace TradeGeckoApi.Service
             if (_tokenExpiry < DateTime.UtcNow)
                 GenerateToken();
 
-            var client = new RestClient(_baseUrl) {
-                Authenticator = new OAuth2AuthorizationRequestHeaderAuthenticator(_accessToken, "Bearer")
-            };
-            client.AddHandler("application/json", new JsonNetDeserializer());
-            return client;
+            return new OAuth2AuthorizationRequestHeaderAuthenticator(_accessToken, "Bearer");
         }
     }
 }

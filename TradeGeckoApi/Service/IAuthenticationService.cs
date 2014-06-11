@@ -6,7 +6,7 @@ namespace TradeGeckoApi.Service
     public interface IAuthenticationService
     {
         void SetAuthorizeCode(string code);
-        RestClient CreateClient();
+        IAuthenticator CreateRequestAuthenticator();
         Uri GenerateAuthorizeUrl();
     }
 }
