@@ -63,19 +63,19 @@ namespace TradeGeckoApi.Service
         protected void InspectResponse(IRestResponse response)
         {
             if (response.ErrorException != null)
-                throw new RequestException("There was a problem processing the request, see inner exception for details", response.ErrorException);
+                throw new RequestException("Exception was raised executing request", response.ErrorException, response);
 
             if (response.StatusCode == HttpStatusCode.NotFound)
-                throw new NotFoundException(string.Format("Resource With Uri '{0}' Couldn't Be Found", response.ResponseUri));
+                throw new NotFoundException(string.Format("Resource With Uri '{0}' Couldn't Be Found", response.ResponseUri), response);
 
             if (response.StatusCode == HttpStatusCode.BadRequest)
-                throw new InvalidRequestException(string.Format("BadRequest {0}", response.Content));
+                throw new InvalidRequestException("Request was rejected by the server as it was malformed", response);
 
             if (response.StatusCode == HttpStatusCode.Forbidden)
-                throw new AuthenticationException(string.Format("Request ApiId/Signature Invalid, {0}", response.Content));
+                throw new AuthenticationException("Request ApiId or Signature Invalid", response);
 
             if (response.StatusCode == HttpStatusCode.InternalServerError)
-                throw new RequestException(string.Format("There was a problem processing the request {0}", response.Content));
+                throw new RequestException(string.Format("There was a problem processing the request {0}", response.Content), response);
         }
     }
 }

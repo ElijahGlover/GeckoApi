@@ -1,5 +1,4 @@
-﻿using System;
-using System.Reflection;
+﻿using System.Reflection;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using TradeGeckoApi.Model;
@@ -32,7 +31,6 @@ namespace TradeGeckoApi.Serialization
                 property.PropertyName = attr.SingularName;
             }
 
-            
             return property;
         }
     }
