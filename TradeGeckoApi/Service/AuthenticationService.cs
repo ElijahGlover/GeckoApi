@@ -3,6 +3,7 @@ using System.Linq;
 using System.Net;
 using RestSharp;
 using TradeGeckoApi.Context;
+using TradeGeckoApi.Exceptions;
 using TradeGeckoApi.Model;
 
 namespace TradeGeckoApi.Service
@@ -80,7 +81,7 @@ namespace TradeGeckoApi.Service
             var client = new RestClient(_baseUrl);
             var response = client.Execute<TokenResponse>(request);
             if (response.StatusCode != HttpStatusCode.OK)
-                throw new Exception(string.Format("Error Getting Token {0} {1}", response.StatusCode, response.Content));
+                throw new AuthenticationException("Error Getting Request Bearer Token", null, response);
 
             _accessToken = response.Data.AccessToken;
             _refreshToken = response.Data.RefreshToken;
