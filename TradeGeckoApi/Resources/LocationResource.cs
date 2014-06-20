@@ -5,7 +5,7 @@ namespace TradeGeckoApi.Resources
 {
     public class LocationResource : Resource<Location>
     {
-        public LocationResource(IRequestService authentication) : base(authentication) { }
+        public LocationResource(IRequestService requestService) : base(requestService) { }
 
         public LocationResource() { }
 

@@ -75,6 +75,7 @@
     <Compile Include="Model\ListResponse.cs" />
     <Compile Include="Resources\InvoiceItemResource.cs" />
     <Compile Include="Resources\InvoiceResource.cs" />
+    <Compile Include="Resources\UserResource.cs" />
     <Compile Include="Serialization\ResponseContractResolver.cs" />
     <Compile Include="Serialization\RootPropertyNameAttribute.cs" />
     <Compile Include="Service\AuthenticationService.cs" />

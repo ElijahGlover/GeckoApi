@@ -5,7 +5,7 @@ namespace TradeGeckoApi.Resources
 {
     public class CompanyResource : Resource<Company>
     {
-        public CompanyResource(IRequestService client) : base(client) { }
+        public CompanyResource(IRequestService requestService) : base(requestService) { }
 
         public CompanyResource() { }
 

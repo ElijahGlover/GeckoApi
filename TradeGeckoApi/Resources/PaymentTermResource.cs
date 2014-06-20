@@ -5,7 +5,7 @@ namespace TradeGeckoApi.Resources
 {
     public class PaymentTermResource : Resource<PaymentTerm>
     {
-        public PaymentTermResource(IRequestService authentication) : base(authentication) { }
+        public PaymentTermResource(IRequestService requestService) : base(requestService) { }
 
         public PaymentTermResource() { }
 

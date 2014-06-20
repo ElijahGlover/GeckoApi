@@ -5,7 +5,7 @@ namespace TradeGeckoApi.Resources
 {
     public class InvoiceItemResource : Resource<InvoiceItem>
     {
-        public InvoiceItemResource(IRequestService client) : base(client) { }
+        public InvoiceItemResource(IRequestService requestService) : base(requestService) { }
 
         public InvoiceItemResource() { }
 

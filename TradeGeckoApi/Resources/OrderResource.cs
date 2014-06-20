@@ -5,7 +5,7 @@ namespace TradeGeckoApi.Resources
 {
     public class OrderResource : Resource<Order>
     {
-        public OrderResource(IRequestService client) : base(client) { }
+        public OrderResource(IRequestService requestService) : base(requestService) { }
 
         public OrderResource() { }
 

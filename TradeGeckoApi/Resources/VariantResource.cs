@@ -5,7 +5,7 @@ namespace TradeGeckoApi.Resources
 {
     public class VariantResource : Resource<Variant>
     {
-        public VariantResource(IRequestService client) : base(client) { }
+        public VariantResource(IRequestService requestService) : base(requestService) { }
 
         public VariantResource() { }
 

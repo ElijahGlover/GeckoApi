@@ -5,7 +5,7 @@ namespace TradeGeckoApi.Resources
 {
     public class PriceListResource : Resource<PriceList>
     {
-        public PriceListResource(IRequestService client) : base(client) { }
+        public PriceListResource(IRequestService requestService) : base(requestService) { }
 
         public PriceListResource() { }
 

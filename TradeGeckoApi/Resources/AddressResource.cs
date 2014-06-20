@@ -5,7 +5,7 @@ namespace TradeGeckoApi.Resources
 {
     public class AddressResource : Resource<Address>
     {
-        public AddressResource(IRequestService client) : base(client) { }
+        public AddressResource(IRequestService requestService) : base(requestService) { }
 
         public AddressResource() { }
 

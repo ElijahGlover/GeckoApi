@@ -5,7 +5,7 @@ namespace TradeGeckoApi.Resources
 {
     public class ContactResource : Resource<Contact>
     {
-        public ContactResource(IRequestService authentication) : base(authentication) { }
+        public ContactResource(IRequestService requestService) : base(requestService) { }
 
         public ContactResource() { }
 

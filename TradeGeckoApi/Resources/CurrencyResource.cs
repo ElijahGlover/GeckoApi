@@ -5,7 +5,7 @@ namespace TradeGeckoApi.Resources
 {
     public class CurrencyResource : Resource<Currency>
     {
-        public CurrencyResource(IRequestService authentication) : base(authentication) { }
+        public CurrencyResource(IRequestService requestService) : base(requestService) { }
 
         public CurrencyResource() { }
 

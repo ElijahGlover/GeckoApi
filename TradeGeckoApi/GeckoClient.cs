@@ -23,6 +23,7 @@ namespace TradeGeckoApi
         private Lazy<VariantResource> _varients;
         private Lazy<InvoiceResource> _invoices;
         private Lazy<InvoiceItemResource> _invoiceItems;
+        private Lazy<UserResource> _users; 
 
         public GeckoClient(string applicationId, string secret, string callbackUrl, string url = null)
         {
@@ -56,6 +57,7 @@ namespace TradeGeckoApi
             _paymentTerms = new Lazy<PaymentTermResource>(() => new PaymentTermResource(_requestService));
             _invoices = new Lazy<InvoiceResource>(() => new InvoiceResource(_requestService));
             _invoiceItems = new Lazy<InvoiceItemResource>(() => new InvoiceItemResource(_requestService));
+            _users = new Lazy<UserResource>(() => new UserResource(_requestService));
         }
 
         public GeckoClient()
@@ -141,6 +143,11 @@ namespace TradeGeckoApi
         public InvoiceItemResource InvoiceItems
         {
             get { return _invoiceItems.Value; }
+        }
+
+        public UserResource Users
+        {
+            get { return _users.Value; }
         }
     }
 }
