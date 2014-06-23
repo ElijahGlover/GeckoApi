@@ -22,9 +22,9 @@ namespace TradeGeckoApi.Model
         public string CompanyCode { get; set; }
         public string Fax { get; set; }
         [JsonProperty("default_tax_rate")]
-        public float? DefaultTaxRate { get; set; }
+        public decimal? DefaultTaxRate { get; set; }
         [JsonProperty("default_discount_rate")]
-        public float? DefaultDiscountRate { get; set; }
+        public decimal? DefaultDiscountRate { get; set; }
         [JsonProperty("default_price_type_id")]
         public string DefaultPriceTypeId { get; set; }
         [JsonProperty("default_payment_term_id")]
