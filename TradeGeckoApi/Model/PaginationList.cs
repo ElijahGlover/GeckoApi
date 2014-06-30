@@ -82,32 +82,32 @@ namespace TradeGeckoApi.Model
 
         public int TotalRecords
         {
-            get { return _pagination.TotalRecords; }
+            get { return _pagination == null ? _source.Count : _pagination.TotalRecords; }
         }
 
         public int TotalPages
         {
-            get { return _pagination.TotalPages; }
+            get { return _pagination == null ? 1 : _pagination.TotalPages; }
         }
 
         public bool FirstPage
         {
-            get { return _pagination.FirstPage; }
+            get { return _pagination == null || _pagination.FirstPage; }
         }
 
         public bool LastPage
         {
-            get { return _pagination.LastPage; }
+            get { return _pagination == null || _pagination.LastPage; }
         }
 
         public bool OutOfBounds
         {
-            get { return _pagination.OutOfBounds; }
+            get { return _pagination == null || _pagination.OutOfBounds; }
         }
 
         public int Offset
         {
-            get { return _pagination.Offset; }
+            get { return _pagination == null ? 0 : _pagination.Offset; }
         }
     }
 }
