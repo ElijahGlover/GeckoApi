@@ -74,7 +74,7 @@ namespace TradeGeckoApi.Service
             if (response.StatusCode == HttpStatusCode.Forbidden)
                 throw new AuthenticationException("Request ApiId or Signature Invalid", response);
 
-            if (response.StatusCode == HttpStatusCode.InternalServerError)
+            if ((int)response.StatusCode >= 300)
                 throw new RequestException(string.Format("There was a problem processing the request {0}", response.Content), response);
         }
     }

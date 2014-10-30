@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 using System.Runtime.Serialization;
 using RestSharp;
 
@@ -32,6 +33,11 @@ namespace TradeGeckoApi.Exceptions
         public IRestResponse Response
         {
             get { return _response; }
+        }
+
+        public HttpStatusCode StatusCode
+        {
+            get { return Response.StatusCode; }
         }
     }
 }
