@@ -135,17 +135,17 @@ namespace TradeGeckoApi
             get { return _varients.Value; }
         }
 
-        public InvoiceResource Invoices
+        public virtual InvoiceResource Invoices
         {
             get { return _invoices.Value; }
         }
 
-        public InvoiceItemResource InvoiceItems
+        public virtual InvoiceItemResource InvoiceItems
         {
             get { return _invoiceItems.Value; }
         }
 
-        public UserResource Users
+        public virtual UserResource Users
         {
             get { return _users.Value; }
         }
