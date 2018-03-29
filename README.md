@@ -1,7 +1,7 @@
 Trade Gecko Api Bindings
 ========
 
-My time is limited to focus on this project, I'd be more than happy to hand it over to a dedicated contributor. 
+**My time is limited to focus on this project, I'd be more than happy to hand it over to a dedicated contributor.**
 
 API bindings to create, read, update &amp; delete [TradeGecko](http://tradegecko.com/) resources. 
 
