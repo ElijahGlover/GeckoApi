@@ -10,7 +10,7 @@ namespace TradeGeckoApi.Model
         public double Quantity { get; set; }
         public decimal Price { get; set; }
         [JsonProperty("variant_id")]
-        public int VariantId { get; set; }
+        public int VariantId? { get; set; }
         public bool Freeform { get; set; }
         public int Position { get; set; }
         [JsonProperty("order_id")]
